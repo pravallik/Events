@@ -1,9 +1,11 @@
 <?php
-if(isset(($_POST['login-submit{']))){
+
+if(isset(($_POST['login-submit']))){
 	require 'dbh.inc.php'; 
 	$mailuid = $_POST['mailuid']; 
 	$password = $_POST['pwd']; 
-	if(empty(mailuid) || empty(password)){
+	if(empty(mailuid) || empty(password))
+	{
 		header ("Location:../index.php?error=emptyfields"); 
 		exit(); 
 
@@ -19,21 +21,25 @@ if(isset(($_POST['login-submit{']))){
 			mysqli_stmt_bind_param($stmt,"ss",$mailuid, $mailuid); 
 			mysqli_stmt_execute($stmt); 
 			$result = mysqli_stmt_get_result($stmt); 
-			if($row= mysqli_fetch_assoc($result)){
+			if($row= mysqli_fetch_assoc($result))
+			{
 				$pwdCheck = password_verify($password, $row['pwdUsers']);
-				if($pwdCheck==false){
+				if($pwdCheck==false)
+				{
 					header ("Location:../index.php?error=wrongpwd"); 
 					exit();
 				} 
-				else if($pwdCheck==true){
+				else if($pwdCheck==true)
+				{
 					session_start(); 
 					$_SESSION['userID']=  $row['idUsers']; 
-					$_SESSION['userUID']=  $row['uidUsers']
+					$_SESSION['userUID']=  $row['uidUsers'];
 					header ("Location:../index.php?login=success"); 
 					exit();
 
 				}
-				else{
+				else
+				{
 					header ("Location:../index.php?error=wrongpwd"); 
 					exit();
 				}
