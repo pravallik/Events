@@ -20,27 +20,25 @@
     </ul>
     </nav>
         <div class = "login-box">
-        <form action = "includes/Login.inc.php" method = "post"></form>
+        <form action = "includes/Login.inc.php" method = "post">
             <h1>Login</h1>
             <div class = "textbox">
-                <i class = "fa fa-user" arian-hidden = "true"></i>
-                <input type = "text" placeholder = "Username" name = "" value = "">
+                <input type = "text" name = "mailuid" placeholder = "Username/Email ...">
             </div>
             <br>
-            <div class = "textbook">
-                <i class = "fa fa-lock" arian-hidden = "true"></i>
-                <input type = "password" placeholder="Password" name = "" value = "">
+            <div class = "textbox">
+                <input type = "password" name = "pwd" placeholder = "Password ...">
             </div>
 
             <br>
-            <button type = "submit" name = "Login">Login</button>
+            <button type = "submit" name = "login-submit">Login</button>
         </form> 
 
         Don't have an account? <a href = "signup.php">Signup </a>
         
         <form action = "includes/Logout.inc.php" method = "post"></form>
             <br>
-            <button type = "submit" name = "Logout">Logout</button>
+            <button type = "submit" name = "logout-submit">Logout</button>
         </form> 
         </div>
 </header>

@@ -1,13 +1,13 @@
 <?php
 
-$servername= "localhost "; 
+$servername= "localhost"; 
 $dbUsername="root"; 
 $dBPassword="Honey17"; 
 // need to chagne dBName 
-$dBName="loginsystem"; 
+$dBName="collegeevent"; 
 
 $conn = mysqli_connect($servername, $dbUsername, $dBPassword, $dBName ); 
 
-if(!conn){
+if(!$conn){
 	die("Connection failed: ".mysqli_connect_error()); 
 }
