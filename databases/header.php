@@ -19,27 +19,21 @@
         <li><a href = "#" >Contact</a></li>
     </ul>
     </nav>
-        <div class = "login-box">
-        <form action = "includes/Login.inc.php" method = "post">
-            <h1>Login</h1>
-            <div class = "textbox">
-                <input type = "text" name = "mailuid" placeholder = "Username/Email ...">
-            </div>
-            <br>
-            <div class = "textbox">
-                <input type = "password" name = "pwd" placeholder = "Password ...">
-            </div>
+        <div class = "header-login">
+            <form action = "includes/login.inc.php" method = "post">
+                <h1>Login</h1>
 
-            <br>
-            <button type = "submit" name = "login-submit">Login</button>
-        </form> 
+                    <input type = "text" name = "mailuid" placeholder = "Username/Email ...">
+                    <input type = "password" name = "pwd" placeholder = "Password ...">
+                    <button type = "submit" name = "login-submit">Login</button>
+            </form> 
 
-        Don't have an account? <a href = "signup.php">Signup </a>
-        
-        <form action = "includes/Logout.inc.php" method = "post"></form>
-            <br>
-            <button type = "submit" name = "logout-submit">Logout</button>
-        </form> 
+            Don't have an account? <a href = "signup.php" class = "header-signup">Signup </a>
+            
+            <form action = "includes/logout.inc.php" method = "post"></form>
+                <br>
+                <button type = "submit" name = "logout-submit">Logout</button>
+            </form> 
         </div>
 </header>
      </body>
