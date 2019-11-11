@@ -20,26 +20,33 @@
     </ul>
     </nav>
         <div class = "login-box">
-        <form action = "includes/Login.inc.php" method = "post">
-            <h1>Login</h1>
-            <div class = "textbox">
+            <?php 
+            if(isset($_SESSION['userId'])){
+                echo  <form action = "includes/logout.inc.php" method = "post"></form>
+                    <br>
+                    <button type = "submit" name = "logout-submit">Logout</button>
+                    </form>;
+                    </div>
+            }
+            else {
+                <form action = "includes/login.inc.php" method = "post">
+                <h1>Login</h1>
+                <div class = "textbox">
                 <input type = "text" name = "mailuid" placeholder = "Username/Email ...">
-            </div>
-            <br>
-            <div class = "textbox">
+                </div>
+                <br>
+                <div class = "textbox">
                 <input type = "password" name = "pwd" placeholder = "Password ...">
-            </div>
+                </div>
 
-            <br>
-            <button type = "submit" name = "login-submit">Login</button>
-        </form> 
-
-        Don't have an account? <a href = "signup.php">Signup </a>
-        
-        <form action = "includes/Logout.inc.php" method = "post"></form>
-            <br>
-            <button type = "submit" name = "logout-submit">Logout</button>
-        </form> 
+                <br>
+                <button type = "submit" name = "login-submit">Login</button>
+                </form> 
+            }
+            ?>
+        Don't have an account? <a href = "signup.php">Signup </a>; 
+    
+    
         </div>
 </header>
      </body>
