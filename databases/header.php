@@ -1,5 +1,5 @@
 <?php 
- session_start();
+ session_start()
 ?> 
 
 <!DOCTYPE html> 
@@ -19,21 +19,27 @@
         <li><a href = "#" >Contact</a></li>
     </ul>
     </nav>
-        <div class = "header-login">
-            <form action = "includes/login.inc.php" method = "post">
-                <h1>Login</h1>
-
-                    <input type = "text" name = "mailuid" placeholder = "Username/Email ...">
-                    <input type = "password" name = "pwd" placeholder = "Password ...">
-                    <button type = "submit" name = "login-submit">Login</button>
-            </form> 
-
-            Don't have an account? <a href = "signup.php" class = "header-signup">Signup </a>
+        <div class = "login-box">
+            <?php 
+                if(isset($_SESSION['userId']))
+                {
+                    echo ' <form action = "includes/logout.inc.php" method = "post"></form>
+                        <button type = "submit" name = "logout-submit">Logout</button>
+                        </form>';
             
-            <form action = "includes/logout.inc.php" method = "post"></form>
-                <br>
-                <button type = "submit" name = "logout-submit">Logout</button>
-            </form> 
+                }
+                else
+                {
+
+                    echo '<form action = "includes/login.inc.php" method = "post">
+                        <input type = "text" name = "mailuid" placeholder = "Username/Email ...">
+                        <input type = "password" name = "pwd" placeholder = "Password ...">
+                        <button type = "submit" name = "login-submit">Login</button>
+                        </form> 
+                        <a href = "signup.php">Signup </a>'; 
+                }
+            ?>
+    
         </div>
 </header>
      </body>
