@@ -32,7 +32,7 @@ if(isset(($_POST['login-submit']))){
 				else if($pwdCheck==true)
 				{
 					session_start(); 
-					$_SESSION['userID']=  $row['idUsers']; 
+					$_SESSION['userId']=  $row['idUsers']; 
 					$_SESSION['userUID']=  $row['uidUsers'];
 					header ("Location:../index.php?login=success"); 
 					exit();
