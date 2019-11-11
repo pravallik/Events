@@ -12,6 +12,12 @@
                     <input type ="text" name= "uid" placeholder="Username">
                     <input type ="text" name= "pwd" placeholder="Password">
                     <input type ="text" name= "pwd-repeat" placeholder="Repeat Password">
+                    <label> Select UserType :</label>
+                    <select name= "usertype"> 
+                        <option value = "Student">Student</option>
+                        <option value = "SuperAdmin">Admin</option>
+                        <option value = "SuperAdmin">SuperAdmin</option>
+                    </select>
                     <button type = "submit" name =" signup-submit">Signup</button>
                 </form>
             </section>
