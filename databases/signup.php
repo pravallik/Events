@@ -6,19 +6,12 @@
             <section class = "section-default">
                 <h1>Signup</h1>
                 <form class= "form-signup" action ="includes/signup.inc.php" method = "post">
-                    <input type ="text" name= "mail" placeholder="Email">
-                    <!-- <input type ="text" name= "fid" placeholder="First Name"> -->
-                    <!-- <input type ="text" name= "lid" placeholder="Last Name"> -->
-                    <input type ="text" name= "uid" placeholder="Username">
-                    <input type ="text" name= "pwd" placeholder="Password">
-                    <input type ="text" name= "pwd-repeat" placeholder="Repeat Password">
-                    <label> Select UserType :</label>
-                    <select name= "usertype"> 
-                        <option value = "Student">Student</option>
-                        <option value = "SuperAdmin">Admin</option>
-                        <option value = "SuperAdmin">SuperAdmin</option>
-                    </select>
-                    <button type = "submit" name =" signup-submit">Signup</button>
+                    <input type ="text" name= "mail" placeholder="Email"><br><br>
+                    <input type ="text" name= "uid" placeholder="Username"><br><br>
+                    <input type = "text" name = "adminstatus" placeholder = "student/admin"><br><br>
+                    <input type ="text" name= "pwd" placeholder="Password"><br><br>
+                    <input type ="text" name= "pwd-repeat" placeholder="Repeat Password"><br><br>
+                    <button type = "submit" name =" signup-submit">Signup</button><br><br>
                 </form>
             </section>
         </div>

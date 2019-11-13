@@ -5,6 +5,7 @@ if(isset($_POST['signup-submit']))
     require 'dbh.inc.php';
     $username  = $_POST['uid'];
     $email  = $_POST['mail'];
+    $usertype = $_POST['adminstatus'];
     $password  = $_POST['pwd'];
     $passwordRepeat  = $_POST['pwd-repeat'];
 
@@ -58,7 +59,7 @@ if(isset($_POST['signup-submit']))
             }
             else
             {
-            $sql = "INSERT INTO users (uidUsers,emailUsers,pwdUsers) VALUES (?,?,?)";
+            $sql = "INSERT INTO users (uidUsers,emailUsers,typeUser,pwdUsers) VALUES (?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($stmt, $sql))
             {
@@ -69,7 +70,7 @@ if(isset($_POST['signup-submit']))
             {
                 $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-                mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
+                mysqli_stmt_bind_param($stmt, "ssss", $username, $email,$usertype,$hashedPwd);
                 mysqli_stmt_execute($stmt);
                 header("Location: ../signup.php?signup = success");
                 exit();

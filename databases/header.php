@@ -12,40 +12,33 @@
     <body>
     <header> 
     <nav class = "nav-header-main">
-    <ul>
+    <!-- <ul>
         <li><a href = "index.php" >Home</a></li>
         <li><a href = "#" >Portfolio</a></li>
         <li><a href = "#" >About me</a></li>
         <li><a href = "#" >Contact</a></li>
-    </ul>
+    </ul> -->
     </nav>
         <div class = "login-box">
             <?php 
-            if(isset($_SESSION['userId'])){
-                echo  <form action = "includes/logout.inc.php" method = "post"></form>
-                    <br>
-                    <button type = "submit" name = "logout-submit">Logout</button>
-                    </form>;
-                    </div>
-            }
-            else {
-                <form action = "includes/login.inc.php" method = "post">
-                <h1>Login</h1>
-                <div class = "textbox">
-                <input type = "text" name = "mailuid" placeholder = "Username/Email ...">
-                </div>
-                <br>
-                <div class = "textbox">
-                <input type = "password" name = "pwd" placeholder = "Password ...">
-                </div>
+                if(isset($_SESSION['userId']))
+                {
+                    echo ' <form action = "includes/logout.inc.php" method = "post">
+                        <button type = "submit" name = "logout-submit">Logout</button>
+                        </form>';
+            
+                }
+                else
+                {
 
-                <br>
-                <button type = "submit" name = "login-submit">Login</button>
-                </form> 
-            }
+                    echo '<form action = "includes/login.inc.php" method = "post">
+                        <input type = "text" name = "mailuid" placeholder = "Username/Email ...">
+                        <input type = "password" name = "pwd" placeholder = "Password ...">
+                        <button type = "submit" name = "login-submit">Login</button>
+                        </form> 
+                        New user? <a href = "signup.php">Signup </a>'; 
+                }
             ?>
-        Don't have an account? <a href = "signup.php">Signup </a>; 
-    
     
         </div>
 </header>

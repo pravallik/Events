@@ -1,10 +1,10 @@
 <?php
-    require "sample.php"; 
+    require "header.php"; 
 ?>
 
     <main>
         <div class = "wrapper-main">
-            <section class= "section-default"
+            <section class= "section-default">
 
                 <?php
                     if(isset($_SESSION['userId'])){
