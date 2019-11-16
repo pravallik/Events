@@ -5,54 +5,52 @@ if(isset($_POST['add-event']))
     require 'dbh.inc.php';
     $EventTitle  = $_POST['etitle'];
     $Location  = $_POST['loc'];
-    $Date = $_POST['date'];
-    $Time  = $_POST['time'];
+    // $Date = $_POST['dateEvents'];
     $RSO  = $_POST['rso'];
+    $Summary = $_POST['disc'];
 
-    if(empty($username) || empty($username)|| empty($username)|| empty($username))
+    if(empty($EventTitle) || empty($Location)|| empty($RSO))
     {
 
-        header("Location: ..../signup.php? error = emptyfields&uid=".$username);
+        header("Location: ..../CreateEvents.php? error = emptyfields&uid=".$EventTitle);
         exit();
     }
     else
     {
 
         // checks if the username already exists
-        $sql = "SELECT uidUsers FROM users WHERE uidUsers = ?" ;
-        $stmt = mysqli_stmt_init($conn);
-        if(!mysqli_stmt_prepare($stmt,$sql))
+        $sqlevents = "SELECT uidEvents FROM events WHERE uidEvents = ?" ;
+        $stmtevents = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmtevents,$sqlevents))
         {
-            header("Location: ../signup.php?error=sqlerror");
+            header("Location: ../CreateEvents.php?errorfirst=sqlerror");
             exit();
         }
         else
         {
-            mysqli_stmt_bind_param($stmt, "s", $username);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_store_result($stmt);
-            $resultCheck = mysqli_stmt_num_rows($stmt);
-            if($resultCheck > 0)
+            mysqli_stmt_bind_param($stmtevents, "s", $EventTitle);
+            mysqli_stmt_execute($stmtevents);
+            mysqli_stmt_store_result($stmtevents);
+            $resultCheckevents = mysqli_stmt_num_rows($stmtevents);
+            if($resultCheckevents > 0)
             {
-                header("Location: ../signup.php?error=Usertaken".$email);
+                header("Location: ../CreateEvents.php?error=EventNameAlreadyExists".$EventTitle);
                 exit();
             }
             else
             {
-            $sql = "INSERT INTO users (uidUsers,emailUsers,typeUser,pwdUsers) VALUES (?,?,?,?)";
-            $stmt = mysqli_stmt_init($conn);
-            if(!mysqli_stmt_prepare($stmt, $sql))
+            $sqlevents = "INSERT INTO events (uidEvents,placeEvents,OidEvents,summaryEvents) VALUES (?,?,?,?)";
+            $stmtevents = mysqli_stmt_init($conn);
+            if(!mysqli_stmt_prepare($stmtevents, $sqlevents))
             {
-                header("Location: ../signup.php?error=sqlerror");
+                header("Location: ../CreateEvents.php?errorsecond=sqlerror");
                 exit();
             }
             else
             {
-                $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-
-                mysqli_stmt_bind_param($stmt, "ssss", $username, $email,$usertype,$hashedPwd);
-                mysqli_stmt_execute($stmt);
-                header("Location: ../signup.php?signup = success");
+                mysqli_stmt_bind_param($stmtevents, "ssss", $EventTitle, $Location,$RSO,$Summary);
+                mysqli_stmt_execute($stmtevents);
+                header("Location: ../CreateEvents.php?signup = success");
                 exit();
             }
 
@@ -63,12 +61,12 @@ if(isset($_POST['add-event']))
 
     }
 
-    mysqli_stmt_close($stmt);
+    mysqli_stmt_close($stmtevents);
     mysqli_close($conn);
 }
 else
 {
-    header("Location: ../signup.php");
+    header("Location: ../CreateEvents.php");
     exit();
 
 }
