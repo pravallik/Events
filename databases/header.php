@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta charset = "utf-8">
-        <tilte>College events </tilte>
+        <h1>College events </h1>
     </head>
 
     <body>
@@ -31,11 +31,12 @@
                 else
                 {
 
-                    echo '<form action = "includes/login.inc.php" method = "post">
-                        <input type = "text" name = "mailuid" placeholder = "Username/Email ...">
-                        <input type = "password" name = "pwd" placeholder = "Password ...">
-                        <button type = "submit" name = "login-submit">Login</button>
-                        </form> 
+                    echo ' <form action = "includes/login.inc.php" method = "post">
+                            Username: <input type = "text" name = "mailuid" placeholder = "Username/Email ..."><br>
+                            <br>
+                            Password: <input type = "password" name = "pwd" placeholder = "Password ..."><br><br>
+                            <button type = "submit" name = "login-submit">Login</button>
+                          </form> 
                         New user? <a href = "signup.php">Signup </a>'; 
                 }
             ?>
