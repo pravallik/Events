@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <form class= "form-signup" action ="includes/CreateEvents.inc.php" method = "post">
+    <form class= "form-createevents" action ="includes/CreateEvents.inc.php" method = "post">
                    Event Title:<br><input type ="text" name= "etitle" placeholder=""><br><br>
                    Location:<br><input type ="text" name= "loc" placeholder=""><br><br>
                    <!-- Date :<br><input type = "datetime-local" name = "dateEvents" placeholder = ""><br><br> -->
