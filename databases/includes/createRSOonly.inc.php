@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['add-event']))
+if(isset($_POST['add-rsoevent']))
 {
     require 'dbh.inc.php';
     $EventTitle  = $_POST['etitle'];
@@ -19,37 +19,37 @@ if(isset($_POST['add-event']))
     {
 
         // checks if the username already exists
-        $sqlevents = "SELECT uidEvents FROM events WHERE uidEvents = ?" ;
-        $stmtevents = mysqli_stmt_init($conn);
-        if(!mysqli_stmt_prepare($stmtevents,$sqlevents))
+        $sqlRSO  = "SELECT uidRSO FROM rsoOnly WHERE uidRSO  = ?" ;
+        $stmtRSO  = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmtRSO ,$sqlRSO ))
         {
             header("Location: ../CreateEvents.php?errorfirst=sqlerror");
             exit();
         }
         else
         {
-            mysqli_stmt_bind_param($stmtevents, "s", $EventTitle);
-            mysqli_stmt_execute($stmtevents);
-            mysqli_stmt_store_result($stmtevents);
-            $resultCheckevents = mysqli_stmt_num_rows($stmtevents);
-            if($resultCheckevents > 0)
+            mysqli_stmt_bind_param($stmtRSO , "s", $EventTitle);
+            mysqli_stmt_execute($stmtRSO );
+            mysqli_stmt_store_result($stmtRSO );
+            $resultCheckRSO  = mysqli_stmt_num_rows($stmtRSO );
+            if($resultCheckRSO  > 0)
             {
                 header("Location: ../CreateEvents.php?error=EventNameAlreadyExists".$EventTitle);
                 exit();
             }
             else
             {
-            $sqlevents = "INSERT INTO events (uidEvents,placeEvents,OidEvents,summaryEvents) VALUES (?,?,?,?)";
-            $stmtevents = mysqli_stmt_init($conn);
-            if(!mysqli_stmt_prepare($stmtevents, $sqlevents))
+            $sqlRSO  = "INSERT INTO rsoOnly (uidRSO ,placeRSO ,OidRSO ,summaryRSO ) VALUES (?,?,?,?)";
+            $stmtRSO  = mysqli_stmt_init($conn);
+            if(!mysqli_stmt_prepare($stmtRSO , $sqlRSO ))
             {
                 header("Location: ../CreateEvents.php?errorsecond=sqlerror");
                 exit();
             }
             else
             {
-                mysqli_stmt_bind_param($stmtevents, "ssss", $EventTitle, $Location,$RSO,$Summary);
-                mysqli_stmt_execute($stmtevents);
+                mysqli_stmt_bind_param($stmtRSO , "ssss", $EventTitle, $Location,$RSO,$Summary);
+                mysqli_stmt_execute($stmtRSO );
                 header("Location: ../CreateEvents.php?signup = success");
                 exit();
             }
@@ -61,7 +61,7 @@ if(isset($_POST['add-event']))
 
     }
 
-    mysqli_stmt_close($stmtevents);
+    mysqli_stmt_close($stmtRSO );
     mysqli_close($conn);
 }
 else
