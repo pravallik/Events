@@ -4,7 +4,7 @@
     <main>
         <div class= "wrapper-main-rso">
             <section class = "section-default-rso">
-                <h1>Private Event </h1>
+                <h1> RSO Only </h1>
                 <form class= "form-createRSOOnly" action ="includes/createRSOonly.inc.php" method = "post">
                     Event Title:<br><input type ="text" name= "etitle" placeholder=""><br><br>
                     Location:<br><input type ="text" name= "loc" placeholder=""><br><br>
