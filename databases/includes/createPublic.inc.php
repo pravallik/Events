@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['add-event']))
+if(isset($_POST['add-publicevent']))
 {
     require 'dbh.inc.php';
     $EventTitle  = $_POST['etitle'];
