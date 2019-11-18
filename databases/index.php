@@ -27,8 +27,6 @@
                                    <p> You are logged in! </p> 
                                    <a href = test2.php><button>View Events</button></a><br><br>
                                    <a href = CreateEvents.php><button> Create Events</button></a><br><br>
-                                   <a href = addRSO.php><button>Add RSO</button></a><br><br>
-                
                             ';
                         }
                         else {
@@ -36,6 +34,8 @@
                             '
                             <p> You are logged in! </p> 
                                    <a href = test2.php><button>View Events</button></a><br><br>
+                                   <a href = joinRSO.php><button>Join Event</button></a><br><br>
+
                             '; 
                         }
 
