@@ -1,26 +1,34 @@
+<?php 
+ session_start()
+ ?>
+ 
 <!DOCTYPE html>
 <html>
 <head>
 
     <h1> Join RSO? </h1>
 
-<?php 
+<?php  
 	require 'includes/dbh.inc.php'; 
+
 ?>
+
 
 </head>
 
 <body>
 	
-    <form class= "form-signup" action ="includes/joinRSO.inc.php" method = "post">
+    <form class= "form-joinrso" action ="includes/joinRSO.inc.php" method = "post">
 	<?php 
+
 	$sqlr= "SELECT * FROM rsos;"; 
 	$sqlrsp= mysqli_query($conn, $sqlr); 
-	$resultChecks =mysqli_num_rows($sqlrsp); 
+	$resultChecks =mysqli_num_rows($sqlrsp);
+	                
 	if($resultChecks > 0){
 		while ($row = mysqli_fetch_assoc($sqlrsp)){
 			?>
-			<input type="radio" name="jorso" value= " <?php echo $row['uidRSO']; ?> "> <?php echo $row['nameRSO'] ?> <br>
+			<input type="radio" name="jorso" value= " <?php echo $row['nameRSO']; ?> "> <?php echo $row['nameRSO'] ?> <br>
 			<?php
 			
 			

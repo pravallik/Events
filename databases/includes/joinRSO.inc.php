@@ -1,11 +1,16 @@
 <?php
 
+session_start()
+?>
+<?php
 if(isset($_POST['JoinRSO']))
 {
     require 'dbh.inc.php';
     $RSOTitle  = $_POST['jorso'];
 	
-    $user  = $_POST[$_SESSION['userUID']];
+    $user  =$_SESSION['userUID'];
+	echo $user; 
+	header("Location: ..../joinRSO.php? error = empty=erjkejrkejrke");
    
     if(empty($RSOTitle))
     {
