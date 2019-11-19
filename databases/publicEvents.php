@@ -2,7 +2,7 @@
     require "CreateEvents.php"; 
 ?>
     <main>
-        <div class= "wrapper-main-public">
+        <div class= "createEventsBody">
             <section class = "section-default-public">
                 <h1>Public Event </h1>
                 <form class= "form-createPublic" action ="includes/createPublic.inc.php" method = "post">
@@ -14,6 +14,7 @@
                              <input type="radio" name="rso" value="KnightHacks">KnightHacks<br><br>
                     Comments :<br><input style = "width: 400px;" type ="text" name= "disc" placeholder=""><br><br>
                    <button type = "submit" name ="add-publicevent">Add Public Event</button><br><br>
+                   <a href="http://localhost/databases1/index.php">Home</a><br><br>
                 </form>
             </section>
         </div>

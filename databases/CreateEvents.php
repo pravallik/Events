@@ -2,12 +2,17 @@
 <html>
 <head>
 
-    <h1> Create Events </h1>
-    <a href = index.php><button><- Back</button></a><br><br>
+    
+    <link rel = "styleSheet" href = "styleCreateEvents.css">
+    <!-- <a href = index.php><button><- Back</button></a><br><br> -->
+
 
 </head>
 
 <body>
+<div class = "createEventsBody">
+    <h1> Create Events </h1>
+    <a href = index.php><button>Home</button></a><br><br>
     <form class= "form-createevents" action ="includes/CreateEvents.inc.php" method = "post">
                   Choose the type of event?<br>
                 <ul>
@@ -17,7 +22,7 @@
                 </ul>
                         
     </form>
-
+</div>
     
 </body>
 
