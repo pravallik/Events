@@ -1,5 +1,6 @@
 <?php
-    require "CreateEvents.php"; 
+    require "CreateEvents.php";
+	require 'includes/dbh.inc.php'; 	
 ?>
     <main>
         <div class= "createEventsBody">
@@ -9,9 +10,20 @@
                     Event Title:<br><input type ="text" name= "etitle" placeholder=""><br><br>
                     Location:<br><input type ="text" name= "loc" placeholder=""><br><br>
                    <!-- Date :<br><input type = "datetime-local" name = "dateEvents" placeholder = ""><br><br> -->
-                    RSO:<br>  <input type="radio" name="rso" value="ACM-W"> ACMW<br>
-                             <input type="radio" name="rso" value="IEE">IEE<br>
-                             <input type="radio" name="rso" value="KnightHacks">KnightHacks<br><br>
+				   RSO: <br>
+				   <?php 
+
+					$sqlr= "SELECT * FROM rsos;"; 
+					$sqlrsp= mysqli_query($conn, $sqlr); 
+					$resultChecks =mysqli_num_rows($sqlrsp);
+					if($resultChecks > 0){
+						while ($row = mysqli_fetch_assoc($sqlrsp)){
+						?>
+                    <br>  <input type="radio" name="rso" value="<?php echo $row['nameRSO']; ?> "> <?php echo $row['nameRSO'] ?><br>
+						<?php
+						}
+					}
+					?>
                     Comments :<br><input style = "width: 400px;" type ="text" name= "disc" placeholder=""><br><br>
                    <button type = "submit" name ="add-publicevent">Add Public Event</button><br><br>
                    <a href="http://localhost/databases1/index.php">Home</a><br><br>

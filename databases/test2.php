@@ -1,3 +1,8 @@
+<?php 
+ session_start()
+?> 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,40 +19,85 @@
 
 <body>
 <div class= "createEventsBody">
-<h1> Events </h1>
+<h1> Public Events </h1>
 	<?php 
-
 	$sqlview= "SELECT * FROM events;"; 
 	$sqlev= mysqli_query($conn, $sqlview); 
 	$resultChecking =mysqli_num_rows($sqlev); 
-	if($resultChecking > 0)
-	{
+	if($resultChecking > 0){
 		while ($row = mysqli_fetch_assoc($sqlev)){
-		?>	<div class = "events" >
-				<?php
-				echo 'Event Title: ' ; 
-				echo $row['uidEvents'] . "<br>";
-				echo 'Location : ' ; 
-				echo $row['placeEvents'] . "<br>";
-				echo 'RSO: ' ; 
-				echo $row['OidEvents'] . "<br>";
-				echo 'Comment: ' ; 
-				echo $row['summaryEvents'] . "<br>";
-				echo '<p> --------------------------------------------------------------------------------- </p> ';
-				?>
-			</div>
-			<?php
-			}
+			echo 'Event Title: ' ; 
+			echo $row['uidEvents'] . "<br>";
+			echo 'Location : ' ; 
+			echo $row['placeEvents'] . "<br>";
+			echo 'RSO: ' ; 
+			echo $row['OidEvents'] . "<br>";
+			echo 'Comment: ' ; 
+			echo $row['summaryEvents'] . "<br>";
+			echo '<p> --------------------------------------------- </p> '; 
 			
-	}
-	
-	// echo '<h1> Private Events </h1>';
-	// echo '<form class= "form-signup" action = "includes/test2.inc.php" method="post">
-	// 	<input type ="text" name= "Uni" placeholder="University"><br><br>
-	// </form>
-	// <a href = "test2.inc.php">View </a><br>';
-
+		}
+	}	
 	?>
+	 <h1> Your University Events </h1>
+	<?php 
+	
+	$sqlprivate= "SELECT * FROM privates;"; 
+	$sqlp= mysqli_query($conn, $sqlprivate); 
+	$resultC =mysqli_num_rows($sqlp); 
+	if($resultC > 0){
+		while ($row = mysqli_fetch_assoc($sqlp)){
+			if ($_SESSION['UNI']==$row['UniPrivates']){
+				echo 'Event Title: ' ; 
+				echo $row['uidPrivates'] . "<br>";
+				echo 'Location : ' ; 
+				echo $row['placePrivates'] . "<br>";
+				echo 'RSO: ' ; 
+				echo $row['OidPrivates'] . "<br>";
+				echo 'Comment: ' ; 
+				echo $row['summaryPrivates'] . "<br>";
+				echo '<p> --------------------------------------------- </p> '; 
+			}
+		}
+	}	
+	?>
+	
+	 <h1> RSO Events </h1>
+	 <?php 
+	
+
+	$sqljoin= "SELECT * FROM joinrso;"; 
+	$sqlJ= mysqli_query($conn, $sqljoin); 
+	$resultQ =mysqli_num_rows($sqlJ); 
+	if($resultQ>0){
+		while ($row = mysqli_fetch_assoc($sqlJ)){
+			
+			if($_SESSION['userUID']==$row['jUsers']){
+				$rsoe= $row['jRSO'];
+				$sqlrsoss= "SELECT * FROM rsoonly;"; 
+				$sqlR= mysqli_query($conn, $sqlrsoss); 
+				$resultY =mysqli_num_rows($sqlR); 
+			if($resultY > 0){
+				while ($row = mysqli_fetch_assoc($sqlR)){
+					$o= $row['OidRSO']; 
+					if ($rsoe==$row['OidRSO']){
+						echo 'Event Title: ' ; 
+						echo $row['uidRSO'] . "<br>";
+						echo 'Location : ' ; 
+						echo $row['placeRSO'] . "<br>";
+						echo 'RSO: ' ; 
+						echo $row['OidRSO'] . "<br>";
+						echo 'Comment: ' ; 
+						echo $row['summaryRSO'] . "<br>";
+						echo '<p> --------------------------------------------- </p> '; 
+					}
+				}
+			}
+			}
+		}
+	}
+	?>
+	
     <a href = index.php><button>Go back to Home Page</button></a>
 
 </div>  

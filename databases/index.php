@@ -17,6 +17,8 @@
                                    <a href = test2.php><button>View Events</button></a><br><br>
                                    <a href = CreateEvents.php><button> Create Events</button></a><br><br>
                                    <a href = addRSO.php><button>Add RSO</button></a><br><br>
+								   <a href = Uni.php><button>Add Universityy</button></a><br><br>
+
                             </div>
                             ';
                         }
@@ -37,7 +39,7 @@
                                     
                                 <p> You are logged in! </p> 
                                     <a href = test2.php><button>View Events</button></a><br><br>
-                                    <a href = joinRSO.php><button>Join Event</button></a><br><br>
+                                    <a href = joinRSO.php><button>Join RSO</button></a><br><br>
 
                                 </div>'; 
                         }
