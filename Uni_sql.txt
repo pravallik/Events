@@ -1,0 +1,8 @@
+CREATE TABLE universities(
+    idUni int(11) AUTO_INCREMENT
+    PRIMARY KEY NOT NULL, 
+    nameUni LONGTEXT NOT NULL, 
+    locUni LONGTEXT NOT NULL,
+    descUni  LONGTEXT NOT NULL, 
+    numStu TINYTEXT NOT NULL); 
+	
