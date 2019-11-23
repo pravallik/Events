@@ -5,8 +5,9 @@ if(isset($_POST['add-publicevent']))
     require 'dbh.inc.php';
     $EventTitle  = $_POST['etitle'];
     $Location  = $_POST['loc'];
-    // $Date = $_POST['dateEvents'];
+    $Date = $_POST['datePublic'];
     $RSO  = $_POST['rso'];
+    $contact = $_POST['pNum'];
     $Summary = $_POST['disc'];
 
     if(empty($EventTitle) || empty($Location)|| empty($RSO))
@@ -39,7 +40,7 @@ if(isset($_POST['add-publicevent']))
             }
             else
             {
-            $sqlevents = "INSERT INTO events (uidEvents,placeEvents,OidEvents,summaryEvents) VALUES (?,?,?,?)";
+            $sqlevents = "INSERT INTO events (uidEvents,placeEvents,publicDate,OidEvents,publicContact,summaryEvents) VALUES (?,?,?,?,?,?)";
             $stmtevents = mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($stmtevents, $sqlevents))
             {
@@ -48,7 +49,7 @@ if(isset($_POST['add-publicevent']))
             }
             else
             {
-                mysqli_stmt_bind_param($stmtevents, "ssss", $EventTitle, $Location,$RSO,$Summary);
+                mysqli_stmt_bind_param($stmtevents, "ssssss", $EventTitle, $Location,$Date,$RSO,$contact,$Summary);
                 mysqli_stmt_execute($stmtevents);
                 header("Location: ../CreateEvents.php?signup = success");
                 exit();

@@ -8,6 +8,7 @@ if(isset($_POST['signup-submit']))
     $usertype = $_POST['adminstatus'];
     $password  = $_POST['pwd'];
     $passwordRepeat  = $_POST['pwd-repeat'];
+    $userUni = $_POST['userUni'];
 
     if(empty($username) || empty($username)|| empty($username)|| empty($username))
     {
@@ -15,21 +16,16 @@ if(isset($_POST['signup-submit']))
         header("Location: ..../signup.php? error = emptyfields&uid=".$username);
         exit();
     }
-    else if(!preg_match("/^[a-zA-Z0-9]*$/",$username)&& !filter_var ($email, FILTER_VALIDATE_EMAIL))
-    {
-            header("Location: ../signup.php?error = invalidmail&uid=");
-            exit();
-    }
+    // else if(!preg_match("/^[a-zA-Z0-9]*$/",$username)&& !filter_var ($email, FILTER_VALIDATE_EMAIL))
+    // {
+    //         header("Location: ../signup.php?error = invalidmail&uid=");
+    //         exit();
+    // }
     // else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
     // {
     //         header("Location: ../signup.php?error = invalidmail&uid=".$username);
     //         exit();
     // }
-    else if(!preg_match("/^[a-zA-Z0-9]*$/",$username))
-    {
-            header("Location: ../signup.php?error = invalidmail&uid=".$email);
-            exit();
-    }
     else if($password != $passwordRepeat)
     {
             header("Location: ../signup.php?error = passwordcheck&uid=".$email);
@@ -59,7 +55,7 @@ if(isset($_POST['signup-submit']))
             }
             else
             {
-            $sql = "INSERT INTO users (uidUsers,emailUsers,typeUser,pwdUsers) VALUES (?,?,?,?)";
+            $sql = "INSERT INTO users (uidUsers,emailUsers,typeUser,pwdUsers,University) VALUES (?,?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($stmt, $sql))
             {
@@ -70,7 +66,7 @@ if(isset($_POST['signup-submit']))
             {
                 $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-                mysqli_stmt_bind_param($stmt, "ssss", $username, $email,$usertype,$hashedPwd);
+                mysqli_stmt_bind_param($stmt, "sssss", $username, $email,$usertype,$hashedPwd,$userUni);
                 mysqli_stmt_execute($stmt);
                 header("Location: ../signup.php?signup = success");
                 exit();

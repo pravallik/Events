@@ -5,8 +5,9 @@ if(isset($_POST['add-privateevent']))
     require 'dbh.inc.php';
     $EventTitle  = $_POST['etitle'];
     $Location  = $_POST['loc'];
-    // $Date = $_POST['dateEvents'];
+    $DatePrivate = $_POST['datePrivate'];
     $RSO  = $_POST['rso'];
+    // $contactPrivate = $_Post['privateNum'];
     $Summary = $_POST['disc'];
     $university = $_POST['Uni'];
 
@@ -40,7 +41,7 @@ if(isset($_POST['add-privateevent']))
             }
             else
             {
-            $sqlPrivates = "INSERT INTO privates (uidPrivates,placePrivates,OidPrivates,summaryPrivates, UniPrivates) VALUES (?,?,?,?,?)";
+            $sqlPrivates = "INSERT INTO privates (uidPrivates,placePrivates,privateDate,OidPrivates,summaryPrivates, UniPrivates) VALUES (?,?,?,?,?,?)";
             $stmtPrivates = mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($stmtPrivates, $sqlPrivates))
             {
@@ -49,7 +50,7 @@ if(isset($_POST['add-privateevent']))
             }
             else
             {
-                mysqli_stmt_bind_param($stmtPrivates, "sssss", $EventTitle, $Location,$RSO,$Summary,$university);
+                mysqli_stmt_bind_param($stmtPrivates, "ssssss", $EventTitle, $Location,$DatePrivate,$RSO,$Summary,$university);
                 mysqli_stmt_execute($stmtPrivates);
                 header("Location: ../CreateEvents.php?signup = success");
                 exit();
