@@ -2,23 +2,30 @@
 <html>
 <head>
 
-    <h1> Add RSO </h1>
+<link rel = "styleSheet" href = "styleCreateEvents.css">
+    
 
 </head>
 
 <body>
-<a href = index.php><button><-- BACK</button></a> <br>
+<div class= "createEventsBody">
+    <h1> Add RSO </h1>
+    <a href = index.php>Home</a> <br><br>
 
-    <form class= "form-addrso" action ="includes/addRSO.inc.php" method = "post">
-                   University:<br><input type ="text" name= "Utitle" placeholder=""><br><br>
-                   Location:<br><input type ="text" name= "locRSO" placeholder=""><br><br>
-                   RSO Name:<br>  <input type="text" name="addRso" placeholder = " "><br><br>
-                   Description:<br><input style = "width: 400px;" type ="text" name= "discRSO" placeholder=""><br><br>
-                   <button type = "submit" name ="add-RSO">Add RSO</button><br><br>
-                        
-        </form>
-    <a href = index.php><button><-- BACK</button></a>
-
+        <form class= "form-addrso" action ="includes/addRSO.inc.php" method = "post">
+                    University:<br><input type ="text" name= "Utitle" placeholder="Title"><br><br>
+                    <!-- Email:<br><input type ="text" name = "mail1" placeholder = "email1"><br><br>
+                    Email:<br><input type ="text" name = "mail1" placeholder = "email1"><br><br>
+                    Email:<br><input type ="text" name = "mail1" placeholder = "email1"><br><br>
+                    Email:<br><input type ="text" name = "mail1" placeholder = "email1"><br><br>
+                    Email:<br><input type ="text" name = "mail1" placeholder = "email1"><br><br> -->
+                    Location:<br><input type ="text" name= "locRSO" placeholder="Location"><br><br>
+                    RSO Name:<br>  <input type="text" name="addRso" placeholder = " Rso Name"><br><br>
+                    Description:<br><input style = "width: 400px;" type ="text" name= "discRSO" placeholder=""><br><br>
+                    <button type = "submit" name ="add-RSO">Add RSO</button><br><br>
+                            
+            </form>
+</div>
     
 </body>
 

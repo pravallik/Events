@@ -2,24 +2,27 @@
 <html>
 <head>
 
-    <h1> Create Events </h1>
+    
+    <link rel = "styleSheet" href = "styleCreateEvents.css">
+    <!-- <a href = index.php><button><- Back</button></a><br><br> -->
+
 
 </head>
 
 <body>
-    <form class= "form-createevents" action ="includes/CreateEvents.inc.php" method = "post">
-                   Event Title:<br><input type ="text" name= "etitle" placeholder=""><br><br>
-                   Location:<br><input type ="text" name= "loc" placeholder=""><br><br>
-                   <!-- Date :<br><input type = "datetime-local" name = "dateEvents" placeholder = ""><br><br> -->
-                   RSO:<br>  <input type="radio" name="rso" value="ACM-W"> ACMW<br>
-                             <input type="radio" name="rso" value="IEE">IEE<br>
-                             <input type="radio" name="rso" value="KnightHacks">KnightHacks<br><br>
-                   Comments :<br><input style = "width: 400px;" type ="text" name= "disc" placeholder=""><br><br>
-                   <button type = "submit" name ="add-event">Add Event</button><br><br>
-                        
-        </form>
-    <a href = index.php><button>Go back to Home Page</button></a>
-
+<div class = "createEventsBody">
+    <h1> Create Events </h1>
+    <a href = index.php><button>Home</button></a><br><br>
+    <!-- <form class= "form-createevents" action ="includes/CreateEvents.inc.php" method = "post"> -->
+                  Choose the type of event?<br>
+                <ul>
+                  <a href = "publicEvents.php"> <li> Public </li> </a><br><br>
+                  <a href = "privateEvents.php"> <li> Private </li> </a><br><br>
+                  <a href = "rsoOnly.php"><li> RSO Only </li> </a><br><br>
+                </ul>
+<!--                      
+    </form> -->
+</div>
     
 </body>
 

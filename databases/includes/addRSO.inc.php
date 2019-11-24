@@ -19,7 +19,7 @@ if(isset($_POST['add-RSO']))
     {
 
         // checks if the username already exists
-        $sqlRSO = "SELECT uidRSO FROM rsos WHERE uidRSO = ?" ;
+        $sqlRSO = "SELECT nameRSO FROM rsos WHERE nameRSO = ?" ;
         $stmtRSO = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmtRSO,$sqlRSO))
         {
@@ -28,13 +28,13 @@ if(isset($_POST['add-RSO']))
         }
         else
         {
-            mysqli_stmt_bind_param($stmtRSO, "s", $UniversityTitle);
+            mysqli_stmt_bind_param($stmtRSO, "s", $RSOName);
             mysqli_stmt_execute($stmtRSO);
             mysqli_stmt_store_result($stmtRSO);
             $resultCheckRSO = mysqli_stmt_num_rows($stmtRSO);
             if($resultCheckRSO> 0)
             {
-                header("Location: ../addRSO.php?error=EventNameAlreadyExists".$UniversityTitle);
+                header("Location: ../addRSO.php?error=RSOAlreadyExists".$RSOName);
                 exit();
             }
             else

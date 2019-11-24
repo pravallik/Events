@@ -5,11 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel = "styleSheet" href = "stylerso.css">
     <h1> Join RSO? </h1>
 
 <?php  
 	require 'includes/dbh.inc.php'; 
+	
 
 ?>
 
@@ -17,7 +18,7 @@
 </head>
 
 <body>
-	
+<div class = "rsoStyle">
     <form class= "form-joinrso" action ="includes/joinRSO.inc.php" method = "post">
 	<?php 
 
@@ -39,7 +40,7 @@
 	</form>
     <a href = index.php><button>Go back to Home Page</button></a>
 
-    
+</div>   
 </body>
 
 </html>
